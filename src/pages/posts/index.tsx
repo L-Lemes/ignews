@@ -1,3 +1,4 @@
+import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 
@@ -40,7 +41,7 @@ export default function Posts({ posts }: PostsProps) {
   )
 }
 
-export async function getServerSideProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const prismic = getPrismicClient()
 
   const response = await prismic.getByType('publication', {
